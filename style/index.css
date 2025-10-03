@@ -1,8 +1,10 @@
 body {
     background-color: #ffffff55;
-    background-image: url("../content/Background.png");
-    backdrop-filter: blur(20px);
-    height: 100vh;
+    background-image:url("../content/Background3.jpg");
+    backdrop-filter: blur(10px);
+    height:5000px;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .navbar_loja {
@@ -79,4 +81,34 @@ body {
     object-fit: cover;
     height: 100%;
     background-position: center;
+}
+
+.produtos_section {
+    width: 100vw;
+    display: grid;
+    gap: 25px 50px;
+    grid-template-columns: repeat(auto-fit, minmax(22vw, auto));
+    justify-content: center; 
+    position: relative;
+    top: 12vh;
+    padding: 12px;
+    justify-items: center
+}
+
+
+.produtos_section div {
+    background-color: rgb(32, 32, 32);
+    border: 4px rgba(255, 255, 255, 0.116) solid;
+    width: 28vw;
+    color: whitesmoke;
+    text-align: center;
+    font-weight: 800;
+    max-width: 300px;
+
+}
+
+.produtos_section img {
+    width:100%;
+    border-radius: 3px;
+    margin-bottom: 8px;
 }
