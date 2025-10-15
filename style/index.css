@@ -2,14 +2,16 @@ body {
     background-color: #1818186e;
     background-image:url("../content/Background3.jpg");
     backdrop-filter: blur(10px);
-    height: 90vh;
+    height: 100vh;
     background-size: cover;
     background-attachment: fixed;
     overflow: hidden;
 }
 
 .navbar_loja {
-    max-width: 100px;
+    min-height: 95px;
+    max-height: 150px;
+    max-width: 100%;
     display: flex;
     position: fixed;
     padding: 10px 0px;
@@ -76,13 +78,14 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     height: 100vh;
+    top:clamp(95px, 10vh, 150px);
+    position: relative;
 }
 
 .carousel {
     height: 50vh;
     overflow: hidden;
     max-height:560px;
-    top: 10vh;
 }
 
 .carousel-inner {
@@ -107,7 +110,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(22vw, auto));
     justify-content: center; 
     position: relative;
-    top: 12vh;
+    top: 30px;
     padding: 12px;
     justify-items: center;
 
