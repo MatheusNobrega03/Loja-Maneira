@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../loja/style/index.css" />
+    <link rel="stylesheet" href="./style/admin.css" />
+    <link rel="icon" href="../content/Icon.png" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body style="margin: 0px;">
+    <section class="body_compras" style="top:0px !important; height: 100vh;">
+
+        <form class="form_login">
+            <h1 class="titulo">Login Adm</h1>
+            <div>
+                <label for="username">Nome:</label>
+                <input type="text" id="username" name="username" placeholder="Digite seu nome" required>
+            </div>
+            <div>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+            </div>
+
+            <button type="submit">Entrar</button>
+        </form>
+
+
+        <footer class="footer" style="position: absolute;bottom: 0px;margin: 0px;">
+            <div class=" footer_component_loja">
+                <h1 class="footer_titulo_loja">Loja Maneira</h1>
+
+                <div class="footer_input">
+                    <a class="base_input" href="../sobre/sobre.html">Sobre Nós</a>
+                    <a class="base_input" href="../loja/index.html">Home</a>
+                    <a class="base_input texto_sublinhado" href="./admin.html">Admin</a>
+
+                </div>
+
+        </footer>
+
+    </section>
+
+    <script>
+        document.querySelector(".form_login").addEventListener("submit", function (event) {
+            event.preventDefault(); 
+
+            const username = document.getElementById("username").value.trim();
+            const senha = document.getElementById("senha").value.trim();
+
+            const loginCorreto = "Matheus";
+            const senhaCorreta = "12345";
+
+            if (username === loginCorreto && senha === senhaCorreta) {
+                localStorage.setItem("Admin", 1)
+                window.location.href = "./admin_index.html";
+            } else {
+                alert("Nome ou senha incorretos!");
+            }
+        });
+    </script>
+
+
+</body>

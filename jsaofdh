@@ -1,0 +1,10 @@
+(formatação) //*div vazia
+
+(json) //*lista
+
+.map  (json)   //*Itens da lista
+
+
+container = formatação //* Encontrar a div e renderizar seu conteudo nela
+
+container .map(json) //* Conteudo como será renderizado

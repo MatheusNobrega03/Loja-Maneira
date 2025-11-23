@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../loja/style/index.css" />
+    <link rel="stylesheet" href="./style/admin.css" />
+    <link rel="icon" href="../content/Icon.png" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body style="margin: 0px;">
+    <section class="body_compras" style="top:0px !important; height: 100vh;">
+
+        <form class="form_login">
+            <h1 class="titulo"> Formulario</h1>
+            <section>
+                <div>
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite o nome" required>
+                </div>
+
+                <div>
+
+                    <label for="preco">Preço:</label>
+                    <input type="text" id="preco" name="preco" placeholder="Digite o preço" required>
+                </div>
+
+                <div>
+                    <label for="imgUp">Imagem Principal:</label>
+                    <input type="text" id="imgUp" name="imgUp" placeholder="Digite o link da imagem" required>
+                </div>
+
+                <div>
+                    <label for="imgDown">Imagem secundária:</label>
+                    <input type="text" id="imgDown" name="imgDown" placeholder="Digite o link da imagem" required>
+                </div>
+            </section>
+            <button type="submit">Salvar Produto</button>
+        </form>
+        <button onclick="deslogar()">Deslogar</button>
+
+        <script>
+            // Garantir que o array exista
+            let roupas = JSON.parse(localStorage.getItem("Roupas"));
+
+            const form = document.querySelector(".form_login");
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                // Pega os valores dos inputs
+                const nome = document.getElementById("nome").value.trim();
+                const preco = document.getElementById("preco").value.trim();
+                const imgUp = document.getElementById("imgUp").value.trim();
+                const imgDown = document.getElementById("imgDown").value.trim();
+
+                let maxId = Math.max(...roupas.map(item => item.id));
+
+                const novoId = maxId + 1;
+
+                // Monta o objeto do produto
+                const novoProduto = {
+                    id: novoId,
+                    nome: nome,
+                    preco: Number(preco.replace(",", ".")),
+                    imgUp: imgUp,
+                    imgDown: imgDown
+                };
+
+                // Adiciona ao array
+                roupas.push(novoProduto);
+
+                // Salva no localStorage
+                localStorage.setItem("Roupas", JSON.stringify(roupas));
+
+                alert("Produto salvo com sucesso!");
+
+                // Limpa o formulário
+                form.reset();
+            });
+        </script>
+
+
+        <footer class="footer" style="position: absolute;bottom: 0px;margin: 0px;">
+            <div class=" footer_component_loja">
+                <h1 class="footer_titulo_loja">Loja Maneira</h1>
+
+                <div class="footer_input">
+                    <a class="base_input" href="../sobre/sobre.html">Sobre Nós</a>
+                    <a class="base_input" href="../loja/index.html">Home</a>
+                    <a class="base_input texto_sublinhado" href="./admin_index.html">Admin</a>
+
+                </div>
+
+        </footer>
+
+    </section>
+    <script>
+        document.getElementById("preco").addEventListener("input", function () {
+            this.value = this.value.replace(/[^0-9,]/g, "");
+
+            const partes = this.value.split(",");
+            if (partes.length > 2) {
+                this.value = partes[0] + "," + partes[1];
+            }
+        });
+
+        function deslogar(){
+            localStorage.removeItem("Admin");
+            alert("Sessão Deslogada!");
+            window.location.href = "../loja/index.html";
+        }
+
+    </script>
+
+</body>

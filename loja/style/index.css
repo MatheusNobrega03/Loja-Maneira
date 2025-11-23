@@ -1,0 +1,276 @@
+body {
+    background-color: #1818186e;
+    background-image:url("../../content/Background3.jpg");
+    backdrop-filter: blur(10px);
+    height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.navbar_loja {
+    max-width: 100%;
+    display: flex;
+    position: fixed;
+    padding: 10px 0px;
+    z-index: 10000;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.686);
+    backdrop-filter: blur(50px);
+    box-shadow: 0px 10px 100px;
+    height: 10dvh;
+}
+
+.navbar_component_loja {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+    max-width: 280px;
+}
+
+.navbar_titulo_loja {
+    font-family: "Lobster";
+    color: yellow;
+    margin: 0px 5%;
+    text-align: center;
+}
+
+.navbar_input_loja {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar_input_loja input {
+    width: 93%;
+    height: 60%;
+    background-color: transparent;
+    color: yellow;
+    padding-left: 15px;
+    border: 2px solid yellow;
+    border-radius: 10px;
+    padding-right: 45px;
+}
+
+.navbar_input_loja input::placeholder {
+    color: rgba(255, 255, 0, 0.856);
+}
+
+.navbar_svg {
+    position: relative;
+    right: 40px;
+}
+
+.navbar_carrinho {
+    position: relative;
+    border: 2px solid yellow;
+    border-radius: 9px;
+    right: 5px;
+    height:57%;
+    padding: 5px;
+    
+}
+
+.body_compras {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 90vh;
+    top: 10vh;
+    position: relative;
+}
+
+.carousel {
+    height: 50vh;
+    overflow: hidden;
+    max-height:560px;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+.carousel-item {
+    height: 100%;
+    align-items: center;
+}
+
+.carousel-item .w-100 {
+    object-fit: cover;
+    height: 100%;
+    background-position: center;
+}
+
+.produtos_section {
+    width: 100vw;
+    position: relative;
+    top: 30px;
+    padding: 12px;
+    justify-items: center;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.produtos_container {
+    position: relative;
+    background-color: rgb(32, 32, 32);
+    border: 4px rgba(255, 255, 255, 0.116) solid;
+    padding-top: 300px;
+    width: 28vw;
+    color: whitesmoke;
+    text-align: center;
+    font-weight: 800;
+    width: 250px;
+    height: 410px;
+    margin: 10px;
+}
+
+.produtos_section img {
+    transition: 0.3s;
+    position: absolute;
+    top: 2.5%;
+    left: 2.5%;
+    width: 95%;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    max-height: 275;
+}
+
+.produtos_section div:hover .produtos_section_img_down {
+    opacity: 0;
+}
+
+.produtos_section_img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.footer {
+    max-width: 100dvw;
+    height: auto;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.686);
+    backdrop-filter: blur(50px);
+    box-shadow: 0px 10px 100px;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.footer_component_loja {
+    margin: 0px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer_titulo_loja {
+    font-family: "Lobster";
+    color: yellow;
+    margin: 15px;
+    text-align: center;
+}
+
+
+.footer_input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.base_input {
+    width: 100%;
+    height: 75%;
+    background-color: transparent;
+    color: yellow;
+    padding-left: 15px;
+    border: 2px solid yellow;
+    border-radius: 10px;
+    margin-inline: 20px;
+    max-width: 375px;
+    font-size: 25px;
+
+}
+
+a {
+    text-decoration: none !important;
+    color: yellow !important;
+}
+
+.texto_sublinhado {
+  text-decoration: underline !important;
+}
+
+/* Parte para atualizar coisas */
+.form_login {
+    position: absolute;
+    height: 50vh;
+    width: 70vw;
+    background-color: rgb(54, 54, 54);
+    border: rgb(63, 63, 63) 2px solid;
+    border-radius: 25px;
+    left: calc(50vw - 35vw);
+    top: calc(50vh - 25vh);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo {
+    color: yellow;
+    text-align: center;
+    font-size: 50px;
+    margin:0px;
+    text-decoration: underline;
+}
+
+label, input{
+    font-family: "Arial";
+    color: yellow;
+    text-align: center;
+    background-color: black;
+    font-size:25px;
+}
+
+button {
+    font-family: "Arial";
+    color: yellow;
+    text-align: center;
+    background-color: black;
+    font-size:25px;
+    margin:10px;
+    border-radius: 10px;
+}
+
+.form_login section {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.form_login div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form_login div label {
+    background-color: transparent;
+}
+
+.form_login div input {
+    border: solid yellow 1px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    text-align: left;
+}
+
+.footer_input a {
+    padding: 0px;
+}
+
