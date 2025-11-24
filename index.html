@@ -18,7 +18,7 @@
 
   <nav class="navbar_loja">
     <div class="navbar_component_loja">
-      <h1 class="navbar_titulo_loja">Loja Maneira</h1>
+   <h1 class="navbar_titulo_loja" onclick="home()">Loja Maneira</h1>
     </div>
     <div class="navbar_input_loja">
       <input type="text" placeholder="Pesquisa"></input>
@@ -30,7 +30,11 @@
       <div>
 
       </div>
-      <img class="navbar_carrinho" src="./content/carrinho.png" />
+      <a class="navbar_carrinho_container" href="./loja/carrinho.html">
+        <img class="navbar_carrinho" src="./content/carrinho.png" />
+        <span id="carrinho-contador" class="contador"></span>
+      </a>
+
     </div>
   </nav>
 
@@ -62,6 +66,7 @@
       </a>
     </div>
 
+
     <div id="produtos" class="produtos_section">
       <script>
         let roupas = JSON.parse(localStorage.getItem("Roupas")); //*procura se existe json roupa dentro do local
@@ -69,24 +74,52 @@
           roupas = [
             {
               id: 1,
-              nome: "Camisa Azul",
-              preco: 59.90,
-              imgUp: "https://via.placeholder.com/300x400?text=Camisa+Azul+Up",
-              imgDown: "https://via.placeholder.com/300x400?text=Camisa+Azul+Down"
+              nome: "Camiseta Mile Morales",
+              preco: 79.90,
+              imgUp: "https://tfcprw.vtexassets.com/arquivos/ids/412160-500-auto?v=638990673473800000&width=500&height=auto&aspect=true",
+              imgDown: "https://tfcprw.vtexassets.com/arquivos/ids/412159-500-auto?v=638990673473800000&width=500&height=auto&aspect=true"
             },
             {
               id: 2,
-              nome: "Jaqueta Preta",
+              nome: "Camiseta Homem Aranha",
               preco: 149.90,
-              imgUp: "https://via.placeholder.com/300x400?text=Jaqueta+Preta+Up",
-              imgDown: "https://via.placeholder.com/300x400?text=Jaqueta+Preta+Down"
+              imgUp: "https://media.discordapp.net/attachments/1133070268269596703/1442218095815950437/412574-500-auto.png?ex=6924a1c5&is=69235045&hm=fc873aaaf1837584f3cd6ceff66f0523e22adcf3a430ebece75c5496d5e0bb9a&=&format=webp&quality=lossless&width=550&height=823",
+              imgDown: "https://images-ext-1.discordapp.net/external/faqVk0W5fAROf-YpyBuJr9qKWTgtX0XarjLKnA8DFtI/%3Fv%3D638990726429100000%26width%3D500%26height%3Dauto%26aspect%3Dtrue/https/tfcprw.vtexassets.com/arquivos/ids/412573-500-auto?format=webp&width=550&height=823"
             },
             {
               id: 3,
-              nome: "Moletom Branco",
+              nome: "Camiseta Bob Esponja Banda",
               preco: 129.90,
-              imgUp: "https://via.placeholder.com/300x400?text=Moletom+Branco+Up",
-              imgDown: "https://via.placeholder.com/300x400?text=Moletom+Branco+Down"
+              imgUp: "https://media.discordapp.net/attachments/1133070268269596703/1442218484800033079/410970-500-auto.png?ex=6924a221&is=692350a1&hm=5c230e8412fbbbc1b1ea049f3c3a3fb40965f2e669ebe7d14db2518f3d6030ef&=&format=webp&quality=lossless&width=550&height=823",
+              imgDown: "https://images-ext-1.discordapp.net/external/XzmniVwuzal0WRSMiuZxvGlCKPDKR4hJvxy7ADV0caU/%3Fv%3D638956057133770000%26width%3D500%26height%3Dauto%26aspect%3Dtrue/https/tfcprw.vtexassets.com/arquivos/ids/410969-500-auto?format=webp&width=550&height=823"
+            },
+            {
+              id: 4,
+              nome: "Camiseta Bob Esponja Adesivos",
+              preco: 69.90,
+              imgUp: "https://media.discordapp.net/attachments/1133070268269596703/1442218712726765668/403667-500-auto.png?ex=6924a258&is=692350d8&hm=096760e5b564c9dda3c41bb829f027363f39cf6388dddaadcbb5b2b7176372d4&=&format=webp&quality=lossless&width=550&height=823",
+              imgDown: "https://images-ext-1.discordapp.net/external/oFOudMkwBKLjSbsigGIaeLD-VmptILJbmH6Gckp028U/%3Fv%3D638871448171100000%26width%3D500%26height%3Dauto%26aspect%3Dtrue/https/tfcprw.vtexassets.com/arquivos/ids/403666-500-auto?format=webp&width=550&height=823"
+            },
+            {
+              id: 5,
+              nome: "Camiseta Homem Aranha",
+              preco: 149.90,
+              imgUp: "https://media.discordapp.net/attachments/1133070268269596703/1442219001743802508/404570-500-auto.png?ex=6924a29d&is=6923511d&hm=ff9bcaf7532943bf5cdde02e3ecfb299876541b764fb515df02c0d61489c398e&=&format=webp&quality=lossless&width=550&height=823",
+              imgDown: "https://images-ext-1.discordapp.net/external/K-hR8kABzNodeoTTDvB6jT3S-OgpyjfnX_NuaIocaE4/%3Fv%3D638871513295700000%26width%3D500%26height%3Dauto%26aspect%3Dtrue/https/tfcprw.vtexassets.com/arquivos/ids/404569-500-auto?format=webp&width=550&height=823"
+            },
+            {
+              id: 6,
+              nome: "Copo Hora de Aventura",
+              preco: 129.90,
+              imgUp: "https://media.discordapp.net/attachments/1133070268269596703/1442219186628727055/397848-500-auto.png?ex=6924a2c9&is=69235149&hm=cf4b1d3f5cc2eaaf380831e37c4b42798e7121dcf5dc7f0970e4ae3219ee70f6&=&format=webp&quality=lossless&width=550&height=823",
+              imgDown: "https://images-ext-1.discordapp.net/external/a9Z1J3oGPbgSp7DHc5OU4SbvL_zWd77ruHAZLdsbWuk/%3Fv%3D638809212818630000%26width%3D500%26height%3Dauto%26aspect%3Dtrue/https/tfcprw.vtexassets.com/arquivos/ids/397847-500-auto?format=webp&width=550&height=823"
+            },
+            {
+              id: 7,
+              nome: "Camiseta Hora de Aventura Colorida",
+              preco: 129.90,
+              imgUp: "https://media.discordapp.net/attachments/1133070268269596703/1442219540548423871/398231-500-auto.png?ex=6924a31d&is=6923519d&hm=2808de8d454137c1b3da52d4ee52d22839a477689977adb0ffec25504b2df1ac&=&format=webp&quality=lossless&width=550&height=823",
+              imgDown: "https://images-ext-1.discordapp.net/external/wDFxnSWpXJjFWaw-4BP0ym1qrfPL5IG0EXgeVQQbcCQ/%3Fv%3D638810976797500000%26width%3D500%26height%3Dauto%26aspect%3Dtrue/https/tfcprw.vtexassets.com/arquivos/ids/398230-500-auto?format=webp&width=550&height=823"
             }
           ];  //*Declara a variavel roupa
           localStorage.setItem("Roupas", JSON.stringify(roupas)); //* Salva a json
@@ -96,14 +129,18 @@
           const container = document.getElementById("produtos");
           container.innerHTML = roupas.map(produto => `
               <div class="produtos_container">
-                  <p onclick="alterarProduto(${produto.id})">EDITAR</p>
-                  <img class="produtos_section_img_up" src="${produto.imgUp}" />
-                  <img class="produtos_section_img_down" src="${produto.imgDown}" />
-              
-                  <div class="produtos_section_text">
-                      <p>${produto.nome}</p>
-                      <p>R$ ${produto.preco.toFixed(2)}</p>
-                  </div>
+                <p class="botao_editar" onclick="alterarProduto(${produto.id})"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M140-140v-135.38l527.62-527.39q9.07-8.24 20.03-12.73 10.97-4.5 23-4.5t23.3 4.27q11.28 4.27 19.97 13.58l48.85 49.46q9.31 8.69 13.27 20 3.96 11.31 3.96 22.62 0 12.07-4.12 23.03-4.12 10.97-13.11 20.04L275.38-140H140Zm562.08-512.23L760-709.77 709.77-760l-57.54 57.92 49.85 49.85Z"/></svg></p>
+                <img class="produtos_section_img_up" src="${produto.imgUp}" />
+                <img class="produtos_section_img_down" src="${produto.imgDown}" />
+            
+                <div class="produtos_section_text">
+                    <p>${produto.nome}</p>
+                    <p>R$ ${produto.preco.toFixed(2)}</p>
+                </div>
+                <button onclick="adicionarCarrinho(${produto.id})">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M286.15-97.69q-29.15 0-49.57-20.43-20.42-20.42-20.42-49.57 0-29.16 20.42-49.58 20.42-20.42 49.57-20.42 29.16 0 49.58 20.42 20.42 20.42 20.42 49.58 0 29.15-20.42 49.57-20.42 20.43-49.58 20.43Zm387.7 0q-29.16 0-49.58-20.43-20.42-20.42-20.42-49.57 0-29.16 20.42-49.58 20.42-20.42 49.58-20.42 29.15 0 49.57 20.42t20.42 49.58q0 29.15-20.42 49.57Q703-97.69 673.85-97.69ZM211.85-790h555.38q24.54 0 37.11 20.89 12.58 20.88 1.2 42.65L677.38-494.31q-9.84 17.31-26.03 26.96-16.2 9.66-35.5 9.66H324l-46.31 84.61q-3.08 4.62-.19 10 2.88 5.39 8.65 5.39h457.69v60H286.15q-40 0-60.11-34.5-20.12-34.5-1.42-68.89l57.07-102.61L136.16-810H60v-60h113.85l38 80Z"/></svg>
+                  Adicionar ao carrinho
+                </button>
               </div>
             `)
             .join("");
@@ -112,13 +149,17 @@
           const container = document.getElementById("produtos");
           container.innerHTML = roupas.map(produto => `
             <div class="produtos_container">
-                <img class="produtos_section_img_up" src="${produto.imgUp}" />
-                <img class="produtos_section_img_down" src="${produto.imgDown}" />
-            
-                <div class="produtos_section_text">
-                    <p>${produto.nome}</p>
-                    <p>R$ ${produto.preco.toFixed(2)}</p>
-                </div>
+              <img class="produtos_section_img_up" src="${produto.imgUp}" />
+              <img class="produtos_section_img_down" src="${produto.imgDown}" />
+          
+              <div class="produtos_section_text">
+                  <p>${produto.nome}</p>
+                  <p>R$ ${produto.preco.toFixed(2)}</p>
+              </div>
+              <button onclick="adicionarCarrinho(${produto.id})">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M286.15-97.69q-29.15 0-49.57-20.43-20.42-20.42-20.42-49.57 0-29.16 20.42-49.58 20.42-20.42 49.57-20.42 29.16 0 49.58 20.42 20.42 20.42 20.42 49.58 0 29.15-20.42 49.57-20.42 20.43-49.58 20.43Zm387.7 0q-29.16 0-49.58-20.43-20.42-20.42-20.42-49.57 0-29.16 20.42-49.58 20.42-20.42 49.58-20.42 29.15 0 49.57 20.42t20.42 49.58q0 29.15-20.42 49.57Q703-97.69 673.85-97.69ZM211.85-790h555.38q24.54 0 37.11 20.89 12.58 20.88 1.2 42.65L677.38-494.31q-9.84 17.31-26.03 26.96-16.2 9.66-35.5 9.66H324l-46.31 84.61q-3.08 4.62-.19 10 2.88 5.39 8.65 5.39h457.69v60H286.15q-40 0-60.11-34.5-20.12-34.5-1.42-68.89l57.07-102.61L136.16-810H60v-60h113.85l38 80Z"/></svg>
+                Adicionar ao carrinho
+              </button>
             </div>
           `)
             .join("");
@@ -126,10 +167,9 @@
       </script>
     </div>
     </div>
-
     <footer class="footer">
       <div class="footer_component_loja">
-        <h1 class="footer_titulo_loja">Loja Maneira</h1>
+        <h1 class="footer_titulo_loja" onclick="home()">Loja Maneira</h1>
 
         <div class="footer_input">
           <a class="base_input" href="./sobre/sobre.html">Sobre Nós</a>
@@ -140,6 +180,60 @@
 
     </footer>
   </section>
+
+  <script>
+    function adicionarCarrinho(id) {
+      let roupas = JSON.parse(localStorage.getItem("Roupas"));
+      let carrinho = JSON.parse(sessionStorage.getItem("Carrinho"));
+
+      const produto = roupas.find(item => item.id == id);
+      if (!produto) {
+        alert("Erro: produto não encontrado.");
+        return;
+      }
+
+      // Verifica se já existe
+      const existente = carrinho.find(item => item.id == id);
+
+      if (existente) {
+        existente.quantidade += 1;  // aumenta quantidade
+      } else {
+        carrinho.push({
+          id: produto.id,
+          nome: produto.nome,
+          preco: produto.preco,
+          img: produto.imgUp,
+          quantidade: 1
+        });
+      }
+
+      sessionStorage.setItem("Carrinho", JSON.stringify(carrinho));
+      alert("Produto adicionado ao carrinho!");
+      atualizarContador()
+    }
+  </script>
+
+  <script>
+    atualizarContador()
+    function atualizarContador() {
+      const contador = document.getElementById("carrinho-contador");
+      let carrinho = JSON.parse(sessionStorage.getItem("Carrinho"));
+
+      let total = carrinho.reduce((acumulado, item) => acumulado + item.quantidade, 0);
+
+      contador.textContent = (total = null ? 0 : total);
+    }
+  </script>
+
+  <!-- 
+  (total = null ? 0 : total)
+  =
+  if (total = null) {
+    0
+  }
+  else {
+    total
+  } -->
 
 </body>
 
@@ -156,13 +250,10 @@
     }
   }
   function alterarProduto(id) {
-    // Pega o array de produtos
     let roupas = JSON.parse(localStorage.getItem("Roupas"));
 
-    // Procura o produto com o ID solicitado
     const produto = roupas.find(item => item.id == id);
 
-    // Insere o HTML no container
     const container = document.getElementById("body_compras");
     container.innerHTML = `
         <form class="form_login">
@@ -191,6 +282,7 @@
             <button type="submit">Salvar Alterações</button>
         </form>
     `;
+
     document.getElementById("preco").addEventListener("input", function () {
       this.value = this.value.replace(/[^0-9,]/g, "");
 
@@ -200,13 +292,11 @@
       }
     });
 
-    // Adiciona evento ao form para salvar as edições
     const form = container.querySelector(".form_login");
 
     form.addEventListener("submit", function (event) {
       event.preventDefault();
 
-      // Atualiza valores
       produto.nome = document.getElementById("nome").value.trim();
       produto.preco = Number(document
         .getElementById("preco")
@@ -215,7 +305,6 @@
       produto.imgUp = document.getElementById("imgUp").value.trim();
       produto.imgDown = document.getElementById("imgDown").value.trim();
 
-      // Salva no localStorage
       localStorage.setItem("Roupas", JSON.stringify(roupas));
 
       alert("Produto alterado com sucesso!");
@@ -226,12 +315,18 @@
 </script>
 
 <script>
-  var myCarousel = document.querySelector('#carouselExampleIndicators');
-  var carousel = new bootstrap.Carousel(myCarousel, {
-    interval: 3000,
-    wrap: true
-  }); 
-  
+
+  let carrinho = JSON.parse(sessionStorage.getItem("Carrinho"));
+  if (!carrinho) {
+    carrinho = [];
+    sessionStorage.setItem("Carrinho", JSON.stringify(carrinho));
+  }
+</script>
+
+<script>
+  function home(){
+     window.location.href = "./index.html";
+  }
 </script>
 
 </html>

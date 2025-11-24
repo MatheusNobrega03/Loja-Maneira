@@ -8,6 +8,8 @@ body {
     overflow: hidden;
 }
 
+
+
 .navbar_loja {
     max-width: 100%;
     display: flex;
@@ -30,6 +32,7 @@ body {
 }
 
 .navbar_titulo_loja {
+    cursor: pointer;
     font-family: "Lobster";
     color: yellow;
     margin: 0px 5%;
@@ -51,6 +54,7 @@ body {
     border: 2px solid yellow;
     border-radius: 10px;
     padding-right: 45px;
+    text-align: left;
 }
 
 .navbar_input_loja input::placeholder {
@@ -62,6 +66,10 @@ body {
     right: 40px;
 }
 
+.navbar_carrinho_container {
+    position: relative;
+}
+
 .navbar_carrinho {
     position: relative;
     border: 2px solid yellow;
@@ -71,6 +79,21 @@ body {
     padding: 5px;
     
 }
+
+.contador {
+    background: rgb(136, 7, 7);
+    color: white;
+    padding: 0px 0px;
+    border-radius: 50%;
+    font-size: 14px;
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+
 
 .body_compras {
     overflow-y: auto;
@@ -106,10 +129,9 @@ body {
     position: relative;
     top: 30px;
     padding: 12px;
+    display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
 }
 
 .produtos_container {
@@ -122,8 +144,30 @@ body {
     text-align: center;
     font-weight: 800;
     width: 250px;
-    height: 410px;
     margin: 10px;
+}
+
+.produtos_container button {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: orange;
+    color: white;
+    text-shadow: 0px 0px 5px #333333;
+    font-weight: 800;
+    padding: 5px 8px;
+}
+
+.botao_editar {
+    position: absolute;
+    top: 10px;
+    right: 6px;
+    background-color: orange;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 100;
+    padding: 5px;
+    box-shadow: 0px 0px 5px #333333;
 }
 
 .produtos_section img {
@@ -134,7 +178,8 @@ body {
     width: 95%;
     border-radius: 3px;
     margin-bottom: 8px;
-    max-height: 275;
+    max-height: 275px;
+    object-fit: cover;
 }
 
 .produtos_section div:hover .produtos_section_img_down {
@@ -166,6 +211,7 @@ body {
 }
 
 .footer_titulo_loja {
+    cursor: pointer;
     font-family: "Lobster";
     color: yellow;
     margin: 15px;
@@ -182,6 +228,7 @@ body {
 }
 
 .base_input {
+    cursor: pointer;
     width: 100%;
     height: 75%;
     background-color: transparent;
@@ -274,3 +321,14 @@ button {
     padding: 0px;
 }
 
+@media screen and (max-width: 900px) {
+    .produtos_section {
+	    grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .produtos_section {
+	    grid-template-columns: 1fr;
+    }
+}
