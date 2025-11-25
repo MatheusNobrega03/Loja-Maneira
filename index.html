@@ -18,18 +18,15 @@
 
   <nav class="navbar_loja">
     <div class="navbar_component_loja">
-   <h1 class="navbar_titulo_loja" onclick="home()">Loja Maneira</h1>
+      <h1 class="navbar_titulo_loja" onclick="home()">Loja Maneira</h1>
     </div>
     <div class="navbar_input_loja">
-      <input type="text" placeholder="Pesquisa"></input>
+      <input oninput="pesquisar(this.value)" type="text" placeholder="Pesquisa">
       <svg class="navbar_svg" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
         fill="#e3e3e3">
         <path
           d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
       </svg>
-      <div>
-
-      </div>
       <a class="navbar_carrinho_container" href="./loja/carrinho.html">
         <img class="navbar_carrinho" src="./content/carrinho.png" />
         <span id="carrinho-contador" class="contador"></span>
@@ -166,19 +163,16 @@
             .join("");
         }
       </script>
-    </div>
-    </div>
     <footer class="footer">
       <div class="footer_component_loja">
         <h1 class="footer_titulo_loja" onclick="home()">Loja Maneira</h1>
-
         <div class="footer_input">
           <a class="base_input texto_sublinhado" href="./index.html">Home</a>
           <a class="base_input" onclick="verificarAdmin()">Admin</a>
-
         </div>
-
+      </div>
     </footer>
+    </div>
   </section>
 
   <script>
@@ -224,16 +218,6 @@
       contador.textContent = (total = null ? 0 : total);
     }
   </script>
-
-  <!-- 
-  (total = null ? 0 : total)
-  =
-  if (total = null) {
-    0
-  }
-  else {
-    total
-  } -->
 
 </body>
 
@@ -339,6 +323,80 @@
 <script>
   function home(){
      window.location.href = "./index.html";
+  }
+
+  function pesquisar(texto) {
+    let roupas = JSON.parse(localStorage.getItem("Roupas"));
+
+    // transforma tudo em minúsculo para comparação
+    let filtro = texto.toLowerCase();
+
+    // filtra todas que contenham o texto
+    let resultado = roupas.filter(prod =>
+      prod.nome.toLowerCase().includes(filtro)
+    );
+
+    renderizarProdutos(resultado);
+  }
+
+  function renderizarProdutos(lista) {
+    const admin = localStorage.getItem("Admin");
+    const container = document.getElementById("produtos");
+
+    if (admin) {
+      container.innerHTML = lista.map(produto => `
+        <div class="produtos_container">
+
+          <p class="botao_editar" onclick="alterarProduto(${produto.id})"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M140-140v-135.38l527.62-527.39q9.07-8.24 20.03-12.73 10.97-4.5 23-4.5t23.3 4.27q11.28 4.27 19.97 13.58l48.85 49.46q9.31 8.69 13.27 20 3.96 11.31 3.96 22.62 0 12.07-4.12 23.03-4.12 10.97-13.11 20.04L275.38-140H140Zm562.08-512.23L760-709.77 709.77-760l-57.54 57.92 49.85 49.85Z"/></svg></p>
+          <p class="botao_apagar" onclick="removerProduto(${produto.id})"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M292.31-140Q262-140 241-161q-21-21-21-51.31V-720h-40v-60h180v-35.38h240V-780h180v60h-40v507.69Q740-182 719-161q-21 21-51.31 21H292.31Zm83.85-140h59.99v-360h-59.99v360Zm147.69 0h59.99v-360h-59.99v360Z"/></svg></p>
+
+          <img class="produtos_section_img_up" src="${produto.imgUp}" />
+          <img class="produtos_section_img_down" src="${produto.imgDown}" />
+
+          <div class="produtos_section_text">
+            <p>${produto.nome}</p>
+            <p>R$ ${produto.preco.toFixed(2)}</p>
+          </div>
+          <button onclick="adicionarCarrinho(${produto.id})">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M286.15-97.69q-29.15 0-49.57-20.43-20.42-20.42-20.42-49.57 0-29.16 20.42-49.58 20.42-20.42 49.57-20.42 29.16 0 49.58 20.42 20.42 20.42 20.42 49.58 0 29.15-20.42 49.57-20.42 20.43-49.58 20.43Zm387.7 0q-29.16 0-49.58-20.43-20.42-20.42-20.42-49.57 0-29.16 20.42-49.58 20.42-20.42 49.58-20.42 29.15 0 49.57 20.42t20.42 49.58q0 29.15-20.42 49.57Q703-97.69 673.85-97.69ZM211.85-790h555.38q24.54 0 37.11 20.89 12.58 20.88 1.2 42.65L677.38-494.31q-9.84 17.31-26.03 26.96-16.2 9.66-35.5 9.66H324l-46.31 84.61q-3.08 4.62-.19 10 2.88 5.39 8.65 5.39h457.69v60H286.15q-40 0-60.11-34.5-20.12-34.5-1.42-68.89l57.07-102.61L136.16-810H60v-60h113.85l38 80Z"/></svg>
+            Adicionar ao carrinho
+          </button>
+
+        </div>
+      `).join("");
+    } else {
+    /* padding: 12px; */
+      container.innerHTML = lista.map(produto => `
+        <div class="produtos_container">
+
+          <img class="produtos_section_img_up" src="${produto.imgUp}" />
+          <img class="produtos_section_img_down" src="${produto.imgDown}" />
+
+          <div class="produtos_section_text">
+            <p>${produto.nome}</p>
+            <p>R$ ${produto.preco.toFixed(2)}</p>
+          </div>
+          <button onclick="adicionarCarrinho(${produto.id})">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M286.15-97.69q-29.15 0-49.57-20.43-20.42-20.42-20.42-49.57 0-29.16 20.42-49.58 20.42-20.42 49.57-20.42 29.16 0 49.58 20.42 20.42 20.42 20.42 49.58 0 29.15-20.42 49.57-20.42 20.43-49.58 20.43Zm387.7 0q-29.16 0-49.58-20.43-20.42-20.42-20.42-49.57 0-29.16 20.42-49.58 20.42-20.42 49.58-20.42 29.15 0 49.57 20.42t20.42 49.58q0 29.15-20.42 49.57Q703-97.69 673.85-97.69ZM211.85-790h555.38q24.54 0 37.11 20.89 12.58 20.88 1.2 42.65L677.38-494.31q-9.84 17.31-26.03 26.96-16.2 9.66-35.5 9.66H324l-46.31 84.61q-3.08 4.62-.19 10 2.88 5.39 8.65 5.39h457.69v60H286.15q-40 0-60.11-34.5-20.12-34.5-1.42-68.89l57.07-102.61L136.16-810H60v-60h113.85l38 80Z"/></svg>
+            Adicionar ao carrinho
+          </button>
+
+        </div>
+      `).join("");
+    }
+
+    // ADICIONA o footer depois dos produtos
+    container.innerHTML += `
+      <footer class="footer">
+        <div class="footer_component_loja">
+          <h1 class="footer_titulo_loja" onclick="home()">Loja Maneira</h1>
+          <div class="footer_input">
+            <a class="base_input texto_sublinhado" href="./index.html">Home</a>
+            <a class="base_input" onclick="verificarAdmin()">Admin</a>
+          </div>
+        </div>
+      </footer>
+    `;
   }
 </script>
 
