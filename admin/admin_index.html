@@ -44,7 +44,7 @@
         <button onclick="deslogar()">Deslogar</button>
 
         <script>
-            // Garantir que o array exista
+
             let roupas = JSON.parse(localStorage.getItem("Roupas"));
 
             const form = document.querySelector(".form_login");
@@ -62,7 +62,6 @@
 
                 const novoId = maxId + 1;
 
-                // Monta o objeto do produto
                 const novoProduto = {
                     id: novoId,
                     nome: nome,
@@ -71,15 +70,12 @@
                     imgDown: imgDown
                 };
 
-                // Adiciona ao array
                 roupas.push(novoProduto);
 
-                // Salva no localStorage
                 localStorage.setItem("Roupas", JSON.stringify(roupas));
 
                 alert("Produto salvo com sucesso!");
 
-                // Limpa o formulário
                 form.reset();
             });
         </script>

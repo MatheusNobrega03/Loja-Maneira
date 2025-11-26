@@ -186,11 +186,10 @@
         return;
       }
 
-      // Verifica se já existe
       const existente = carrinho.find(item => item.id == id);
 
       if (existente) {
-        existente.quantidade += 1;  // aumenta quantidade
+        existente.quantidade += 1;  
       } else {
         carrinho.push({
           id: produto.id,
@@ -328,10 +327,9 @@
   function pesquisar(texto) {
     let roupas = JSON.parse(localStorage.getItem("Roupas"));
 
-    // transforma tudo em minúsculo para comparação
+
     let filtro = texto.toLowerCase();
 
-    // filtra todas que contenham o texto
     let resultado = roupas.filter(prod =>
       prod.nome.toLowerCase().includes(filtro)
     );
@@ -365,7 +363,6 @@
         </div>
       `).join("");
     } else {
-    /* padding: 12px; */
       container.innerHTML = lista.map(produto => `
         <div class="produtos_container">
 
@@ -385,7 +382,6 @@
       `).join("");
     }
 
-    // ADICIONA o footer depois dos produtos
     container.innerHTML += `
       <footer class="footer">
         <div class="footer_component_loja">
